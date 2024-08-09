@@ -7,6 +7,14 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
+class HomeViewModel {
+
+  class HomeState(
+    final followers: List<Follower>
+    fianl errorMessage
+  )
+}
+
 class _HomeScreenState extends State<HomeScreen> {
   final _usernameController = TextEditingController();
   final _githubService = GithubService();
@@ -40,11 +48,12 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  // Localization
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      appBar: AppBar(title: Text('GitHub Followers')),
+      appBar: AppBar(title: Text(AppLocaliztion.followerList)),
       body: Column(
         children: [
           Padding(
@@ -94,6 +103,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     trailing: ElevatedButton(
                       child: Text('See Details'),
                       onPressed: () {
+
+                        // Navigation graph'ı bir noktada oluşturulur
+                        // Ve kullanırken URL'ler ile kullanılır ör: '/follower/:username'
+                        // Navigator impl. edelim
                         Navigator.push(
                           context,
                           MaterialPageRoute(
